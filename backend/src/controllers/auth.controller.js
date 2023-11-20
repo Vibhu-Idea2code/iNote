@@ -68,7 +68,7 @@ const login = async (req, res) => {
 
     let option = {
       email,
-      role: findUser.role,
+      // role: findUser.role,
       exp: moment().add(1, "days").unix(),
     };
 
@@ -80,7 +80,7 @@ const login = async (req, res) => {
     if (token) {
       data = await userService.findUserAndUpdate(findUser._id, token);
     }
-    res.status(200).json({ data });
+    res.status(200).json({success: true, data });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
